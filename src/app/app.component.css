@@ -1,0 +1,9 @@
+.error {
+  font-size: 12px;
+  color: #dd1b1c;
+}
+
+.scroll-table {
+  height: 40vh;
+  overflow-y: scroll;
+}

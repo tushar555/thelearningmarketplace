@@ -1,20 +1,143 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+  <img width="300" alt="Angular Logo" src="assets/img/logo.png">
+</div> -->
 
+
+<!-- <div class="container">
+  <div class="col-md-12">
+    <h5 class="card-title">Card title</h5>
+
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">Hello! Welcome to The Learning Marketplace, a new way to learn online through creating
+          meaningful experiences on topics
+          ranging from managing personal finances to developing empathy, to cultivating critical thinking. We want to
+          give you the
+          skills to be successful and adaptable in a changing world.
+
+          Add your email below to be notified of new activities.
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <input type='text' placeholder="Your Email" class='form-control' for='text'>
+    </div>
+    <div class="col-md-6">
+      <input type='text' placeholder="Your Name" class='form-control' for='text'>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <input type='button' class='btn btn-primary' value="Submit">
+
+    </div>
+  </div>
+</div> -->
+
+
+<section class="py-5">
+  <div class="container">
+    <div class="row ">
+      <div class="col-md-4 py-5 bg-primary text-white text-center">
+
+        <div class="card-body">
+          <img src="assets/img/logo.png" style="width:50%">
+          <h2 class="py-3">Join Waitlist</h2>
+          <p>Hello! Welcome to The Learning Marketplace, a new way to learn online through creating
+            meaningful experiences on topics
+            ranging from managing personal finances to developing empathy, to cultivating critical thinking. We want
+            to
+            give you the
+            skills to be successful and adaptable in a changing world.
+
+            Add your email below to be notified of new activities.
+
+          </p>
+        </div>
+
+      </div>
+      <div class="col-md-8 py-5 border">
+        <h4 class="pb-4">Please fill with your details</h4>
+        <form [formGroup]="loginForm">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="email" required class="form-control" formControlName="userEmail" placeholder="Email">
+            </div>
+
+            <div class="form-group col-md-6">
+              <input name="Full Name" required placeholder="Full Name" formControlName="userName" class="form-control"
+                type="text">
+            </div>
+
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div
+                *ngIf="loginForm.controls.userEmail.value == '' && loginForm.controls.userEmail.dirty && loginForm.controls.userEmail.errors"
+                class="error-msg">
+                <span class="error"> *Please enter email </span>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6">
+              <div
+                *ngIf="loginForm.controls.userName.value == '' && loginForm.controls.userName.dirty && loginForm.controls.userName.errors"
+                class="error-msg">
+                <span class="error"> *Please enter Full Name </span>
+              </div>
+            </div>
+
+          </div>
+          <div class="form-row ml-1">
+            <div class="col-md-6">
+              <button type="button" [disabled]="loginForm.invalid" (click)="onSubmit()"
+                class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" style='float: right;' (click)="viewUsers()"
+                class="btn btn-primary">{{btnTitle}}</button>
+            </div>
+
+          </div>
+          <div class="alert alert-success mt-3" role="alert" *ngIf='showSuccessMessage'>
+            Thank you for registration, We will connect with you soon!
+          </div>
+          <div class="form-row ml-1 mt-3 scroll-table" *ngIf='showUsers'>
+            <div class="col-md-8">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor='let j of userEmail'>
+                    <td>{{j.full_name}}</td>
+                    <td>{{j.email}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
